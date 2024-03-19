@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="white_color">#ffffff</color>
+    <color name="light_grey_color">#aeadad</color>
+    <color name="grey_color">#575757</color>
+    <color name="dark_grey_color">#5e5e5e</color>
+    <color name="black_color">#000000</color>
+    <color name="blue_color">#0000ff</color>
+    <color name="blue_o15">#150000ff</color>
+
+    <color name="purple_color">#882252</color>
+    <color name="purple_error_color">#b90459</color>
+    <color name="green_color">#007b76</color>
+    <color name="green_o15">#15007b76</color>
+
+    <color name="light_green_color">#a2c537</color>
+    <color name="red_color">#ff0000</color>
+    <color name="red_o15">#15ff0000</color>
+    <color name="welcome_color">#7e7e7e</color>
+    <color name="title_color">#262626</color>
+    <color name="transparent_color">#00000000</color>
+    <color name="transparent_dark_color">#bb000000</color>
+
+    <color name="material_pink">#ff4081</color>
+    <color name="material_indigo">#536dfe</color>
+    <color name="material_amber">#ffd740</color>
+    <color name="material_cyan">#40c4ff</color>
+    <color name="material_light_green">#dce775</color>
+    <color name="material_cyan_accent">#18ffff</color>
+    <color name="material_deep_orange">#ff6e40</color>
+    <color name="material_teal">#1de9b6</color>
+    <color name="material_orange">#ff9100</color>
+    <color name="material_turquoise">#64ffda</color>
+
+    <color name="material_pink_o25">#40ff4081</color>
+    <color name="material_indigo_o25">#40536dfe</color>
+    <color name="material_amber_o25">#40ffd740</color>
+    <color name="material_cyan_o25">#4040c4ff</color>
+    <color name="material_light_green_o25">#40dce775</color>
+    <color name="material_cyan_accent_o25">#4018ffff</color>
+    <color name="material_deep_orange_o25">#40ff6e40</color>
+    <color name="material_teal_o25">#401de9b6</color>
+    <color name="material_orange_o25">#40ff9100</color>
+    <color name="material_turquoise_o25">#4064ffda</color>
+
+
+    <color name="material_pink_o15">#15ff4081</color>
+    <color name="material_indigo_o15">#15536dfe</color>
+    <color name="material_amber_o15">#15ffd740</color>
+    <color name="material_cyan_o15">#1540c4ff</color>
+    <color name="material_light_green_o15">#15dce775</color>
+    <color name="material_cyan_accent_o15">#1518ffff</color>
+    <color name="material_deep_orange_o15">#15ff6e40</color>
+    <color name="material_teal_o15">#151de9b6</color>
+    <color name="material_orange_o15">#15ff9100</color>
+    <color name="material_turquoise_o15">#1564ffda</color>
+
+</resources>

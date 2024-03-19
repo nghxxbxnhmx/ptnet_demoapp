@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/tab_background">
+
+        <RadioButton
+            android:id="@+id/radio_2_4GHz"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:gravity="center"
+            android:background="@drawable/tab_indicator_selected"
+            android:text="2.4GHz"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/radio_5GHz"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/tab_indicator_selected"
+            android:text="5GHz"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        style="@style/FullScreenGraph"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/radioGroup"
+        app:backgroundColor="#FFFFFF" />
+</RelativeLayout>

@@ -1,32 +1,37 @@
 package com.ptnet.core.android.networks
 
-import android.util.Log
 import com.ptnet.core.android.models.HopInfo
 import com.ptnet.core.android.models.PingContainer
-import java.io.IOException
-import java.io.InputStream
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.InetAddress
 
-class Ping(private val url: String) {
-    companion object {
-        private const val TIMEOUT = 3000
-    }
+class PingInetAddress(private val url: String) {
 
-    fun execute(ttl: Int = 4): String {
-        return executePing("-c $ttl -W $TIMEOUT")
-    }
-
-    fun executeWithTtl(ttl: Int): String {
-        return executePing("-c 1 -t $ttl -W $TIMEOUT")
-    }
-
-    private fun executePing(options: String): String {
-        return try {
-            Runtime.getRuntime().exec("ping $options $url").inputStream.bufferedReader()
-                .use { it.readText() }
-        } catch (e: IOException) {
-            Log.e("Ping", "Error executing ping command", e)
-            ""
+    fun execute(ttl: Int = 4, count: Int = 1): String {
+        val address = InetAddress.getByName(url)
+        val command = if (System.getProperty("os.name").startsWith("Windows")) {
+            "ping -n $count -i $ttl ${address.hostAddress}"
+        } else {
+            "ping -c $count -t $ttl ${address.hostAddress}"
         }
+
+        return executeCommand(command)
+    }
+
+    private fun executeCommand(command: String): String {
+        val process = Runtime.getRuntime().exec(command)
+        val reader = BufferedReader(InputStreamReader(process.inputStream))
+        val stringBuilder = StringBuilder()
+        var line: String?
+
+        while (reader.readLine().also { line = it } != null) {
+            stringBuilder.append(line).append("\n")
+        }
+
+        process.waitFor() // Chờ quá trình kết thúc
+
+        return stringBuilder.toString()
     }
 
     fun parsePingOutput(pingOutput: String): PingContainer? {

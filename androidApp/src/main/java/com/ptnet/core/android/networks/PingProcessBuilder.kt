@@ -1,31 +1,42 @@
 package com.ptnet.core.android.networks
 
-import android.util.Log
 import com.ptnet.core.android.models.HopInfo
 import com.ptnet.core.android.models.PingContainer
+import java.io.BufferedReader
 import java.io.IOException
-import java.io.InputStream
+import java.io.InputStreamReader
 
-class Ping(private val url: String) {
-    companion object {
-        private const val TIMEOUT = 3000
-    }
+class PingProcessBuilder(private val url: String) {
 
     fun execute(ttl: Int = 4): String {
-        return executePing("-c $ttl -W $TIMEOUT")
+        return executePing("-c $ttl")
     }
 
     fun executeWithTtl(ttl: Int): String {
-        return executePing("-c 1 -t $ttl -W $TIMEOUT")
+        return executePing("-c 1 -t $ttl")
     }
 
     private fun executePing(options: String): String {
-        return try {
-            Runtime.getRuntime().exec("ping $options $url").inputStream.bufferedReader()
-                .use { it.readText() }
+        val processBuilder = ProcessBuilder("ping", options, url)
+        try {
+            val process = processBuilder.start()
+            val reader = BufferedReader(InputStreamReader(process.inputStream))
+            val stringBuilder = StringBuilder()
+            var line: String?
+
+            while (reader.readLine().also { line = it } != null) {
+                stringBuilder.append(line).append("\n")
+            }
+
+            process.waitFor() // Chờ quá trình kết thúc
+
+            return stringBuilder.toString()
         } catch (e: IOException) {
-            Log.e("Ping", "Error executing ping command", e)
-            ""
+            e.printStackTrace()
+            return ""
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+            return ""
         }
     }
 

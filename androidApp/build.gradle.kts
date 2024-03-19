@@ -12,6 +12,9 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
     buildFeatures {
         compose = true
@@ -44,7 +47,10 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
     implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.compose.bom))
+    androidTestImplementation(platform(libs.compose.bom))
     debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.ui.test.manifest)
 
     implementation ("net.java.dev.jna:jna:5.14.0")
     implementation("androidx.core:core-ktx:1.7.0")
@@ -57,7 +63,6 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.7.6")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-
     implementation("androidx.activity:activity-compose:1.8.1")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")
@@ -73,8 +78,26 @@ dependencies {
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     compileOnly("org.projectlombok:lombok:1.18.30")
     annotationProcessor ("org.projectlombok:lombok:1.18.30")
-
     implementation("com.fasterxml.jackson.core:jackson-databind:2.12.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.0")
     implementation("com.google.code.gson:gson:2.10.1")
+
+
+    // https://mvnrepository.com/artifact/com.squareup.okhttp/okhttp
+    implementation("com.squareup.okhttp:okhttp:2.7.5")
+    implementation("com.patrykandpatrick.vico:compose:1.13.1")
+    implementation("com.patrykandpatrick.vico:compose-m2:1.13.1")
+    implementation("com.patrykandpatrick.vico:compose-m3:1.13.1")
+    implementation("com.patrykandpatrick.vico:core:1.13.1")
+    implementation("com.patrykandpatrick.vico:views:1.13.1")
+    implementation("com.squareup.okhttp:okhttp:2.7.5")
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-scalars:2.9.0")
+
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    implementation("com.github.madrapps:plot:0.1.1")
+    implementation("com.androidplot:androidplot-core:1.5.10")
+//    implementation("org.xbill:dns:2.0.8")
 }
